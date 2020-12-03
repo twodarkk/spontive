@@ -1,0 +1,5 @@
+de\twodarkk\spontive\database\repository\UserRepository.class
+de\twodarkk\spontive\database\entity\User.class
+de\twodarkk\spontive\AccessingDataJpaApplication.class
+de\twodarkk\spontive\SpontiveApplication.class
+de\twodarkk\spontive\database\entity\BaseEntity.class
