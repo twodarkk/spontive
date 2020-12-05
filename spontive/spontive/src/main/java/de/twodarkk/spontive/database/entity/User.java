@@ -7,22 +7,15 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @Table(name = "users")
-public class User {
+public class User extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    private LocalDateTime created;
-    private LocalDateTime updated;
-
-    private boolean active;
     private LocalDate lastLogin;
 
     private String firstName;
@@ -33,7 +26,17 @@ public class User {
     private String notifications;
     private String password;
 
-    public User(String firstName, String lastName, String userName,
+    @OneToMany(mappedBy = "user")
+    private Set<AccountUser> accountUser;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Billings> billings;
+
+    @OneToMany(mappedBy = "user")
+    private Set<History> history;
+
+    // for auto create
+    public User (String firstName, String lastName, String userName,
                 String eMail, String mobile, String notifications, String password) {
         this.setCreated(LocalDateTime.now());
         this.setUpdated(LocalDateTime.now());
